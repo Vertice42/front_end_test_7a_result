@@ -1,0 +1,88 @@
+<html>
+    <style>
+        .item span{
+            color: black;
+            margin: auto 0;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: rgb(145, 145, 145);
+            border: solid 0.2vw rgb(214, 214, 214);
+            border-radius: 50%;
+            min-width: 35px;
+            aspect-ratio: 1/1;
+            text-align: center;
+            background-color: white;
+        }
+
+        .inputDiv{
+            display: flex;
+            height: 100%;
+        }
+
+        .inputDiv input{
+            height: fit-content;
+            margin: auto;
+            font-size: xx-large;
+        }
+
+        .item{
+            display: flex;
+            color: aliceblue;
+            width: 50%;
+            margin:  2% auto;
+            padding: 1%;
+            background-color: rgb(145, 145, 145);
+            border: solid 0.5vw rgb(214, 214, 214);
+        }
+        #displays{
+            width: 100%;    
+            max-height: 100vh;
+            font-size: x-large;
+            overflow-y: scroll;
+            background-color: rgb(233, 233, 233);
+        }
+    </style>
+
+    <head></head>
+
+    
+    <body style="display: flex">
+        <div>
+            <div class="inputDiv">
+            <input type="number" name="" id="numberInput" value="15">
+            </div> 
+        </div>
+
+        <div id="displays"></div>
+    </body>
+    <script>
+        
+
+/**
+@type {HTMLInputElement}
+*/
+const numberInput = document.getElementById("numberInput");
+/**
+@type {HTMLDivElement}
+*/
+const mainDisplay = document.getElementById("displays")
+
+function update(displays){
+    mainDisplay.innerHTML = "";
+    for (let i = 0; i < displays; i++) {
+        const div = document.createElement("div");
+        div.classList.add("item")
+        const text = document.createElement("span");
+        text.innerText = `${i+1}`;
+        div.appendChild(text);
+        mainDisplay.appendChild(div);
+    }
+}
+
+numberInput.addEventListener("change",(element)=>{
+    update(Number(numberInput.value));
+})
+
+update(Number(numberInput.value))
+
+    </script>
+</html>
